@@ -3,7 +3,7 @@ const Table = require("@saltcorn/data/models/table");
 const Form = require("@saltcorn/data/models/form");
 const View = require("@saltcorn/data/models/view");
 const Workflow = require("@saltcorn/data/models/workflow");
-const { text, div, button } = require("@saltcorn/markup/tags");
+const { text, div, button, h3, p } = require("@saltcorn/markup/tags");
 const { getState } = require("@saltcorn/data/db/state");
 const db = require("@saltcorn/data/db");
 const { FIELD_TYPES, STEP_TYPES } = require('./types');
@@ -72,6 +72,10 @@ const run = async (table_id, viewname, config, state, extra) => {
     return renderEntries(entries);
   }
 
+  if (!form_structure || !form_structure.steps || form_structure.steps.length === 0) {
+    return div({ class: "alert alert-danger" }, "Error: Form structure is invalid or empty");
+  }
+
   const currentStep = state.step || 0;
   const step = form_structure.steps[currentStep];
 
@@ -104,26 +108,31 @@ const run = async (table_id, viewname, config, state, extra) => {
 };
 
 const save_submission = async (data, form_name) => {
-  const table = await Table.findOne({ name: "form_submissions" });
-  if (!table) {
-    await Table.create("form_submissions");
-    await Field.create({
-      table: "form_submissions",
-      name: "form_name",
-      label: "Form Name",
-      type: "String",
+  try {
+    const table = await Table.findOne({ name: "form_submissions" });
+    if (!table) {
+      await Table.create("form_submissions");
+      await Field.create({
+        table: "form_submissions",
+        name: "form_name",
+        label: "Form Name",
+        type: "String",
+      });
+      await Field.create({
+        table: "form_submissions",
+        name: "submitted_data",
+        label: "Submitted Data",
+        type: "JSON",
+      });
+    }
+    await db.insert("form_submissions", {
+      form_name,
+      submitted_data: data,
     });
-    await Field.create({
-      table: "form_submissions",
-      name: "submitted_data",
-      label: "Submitted Data",
-      type: "JSON",
-    });
+  } catch (error) {
+    console.error("Error saving form submission:", error);
+    throw new Error("Failed to save form submission");
   }
-  await db.insert("form_submissions", {
-    form_name,
-    submitted_data: data,
-  });
 };
 
 module.exports = {
