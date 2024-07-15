@@ -1,5 +1,5 @@
 {
-  "name": "@hostmason/drag-drop-form-builder",
+  "name": "drag-drop-form-builder",
   "version": "0.1.0",
   "description": "Drag and drop form builder for Saltcorn",
   "main": "index.js",
