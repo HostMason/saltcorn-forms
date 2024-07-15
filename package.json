@@ -1,6 +1,6 @@
 {
   "name": "hostmason-drag-drop-form-builder",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Drag and drop form builder for Saltcorn",
   "main": "index.js",
   "scripts": {
