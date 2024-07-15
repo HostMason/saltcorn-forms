@@ -47,12 +47,8 @@ class DragDropBuilder {
   }
 }
 
-module.exports = {
-  name: "DragDropBuilder",
-  description: "Drag and drop form builder",
-  viewtemplateClass: DragDropBuilder
-};
-
 function domReady(fn) {
   return `document.addEventListener("DOMContentLoaded",function(){${fn}});`;
 }
+
+module.exports = DragDropBuilder;

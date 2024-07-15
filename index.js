@@ -1,6 +1,6 @@
 const { input } = require("@saltcorn/markup/tags");
 const { text } = require("@saltcorn/markup/tags/input");
-const { DragDropBuilder } = require("./viewtemplates");
+const DragDropBuilder = require("./viewtemplates");
 
 module.exports = {
   sc_plugin_api_version: 1,
