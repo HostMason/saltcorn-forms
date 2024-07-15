@@ -8,16 +8,10 @@
   },
   "dependencies": {
     "@saltcorn/data": "^0.95.0",
-    "@saltcorn/types": "^0.95.0",
     "@saltcorn/markup": "^0.95.0"
   },
   "author": "hostmason",
   "license": "MIT",
-  "peerDependencies": {
-    "@saltcorn/data": "^0.95.0",
-    "@saltcorn/db-common": "^0.95.0",
-    "@saltcorn/types": "^0.95.0"
-  },
   "saltcorn": {
     "plugin_module": true
   },
