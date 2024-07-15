@@ -1,5 +1,12 @@
-const { input, text } = require("@saltcorn/markup/tags");
 const DragDropBuilder = require("./viewtemplates");
+
+function input(attrs) {
+  return { tag: 'input', attributes: attrs };
+}
+
+function text(content) {
+  return content;
+}
 
 module.exports = {
   sc_plugin_api_version: 1,

@@ -6,10 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@saltcorn/data": "^0.95.0",
-    "@saltcorn/markup": "^0.95.0"
-  },
   "author": "hostmason",
   "license": "MIT",
   "saltcorn": {

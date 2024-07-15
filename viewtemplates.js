@@ -1,18 +1,25 @@
-const Field = require("@saltcorn/data/models/field");
-const Form = require("@saltcorn/data/models/form");
-const { div, script, input } = require("@saltcorn/markup/tags");
-
 class DragDropBuilder {
+  static div(...args) {
+    return { tag: 'div', contents: args };
+  }
+
+  static script(content) {
+    return { tag: 'script', contents: content };
+  }
+
+  static input(attrs) {
+    return { tag: 'input', attributes: attrs };
+  }
   constructor(name, configuration) {
     this.name = name;
     this.configuration = configuration;
   }
 
   async run(table_id, viewname, { columns }) {
-    return div(
+    return DragDropBuilder.div(
       { id: "drag-drop-builder" },
-      input({ type: "hidden", id: "form-state", name: "form_state" }),
-      script(
+      DragDropBuilder.input({ type: "hidden", id: "form-state", name: "form_state" }),
+      DragDropBuilder.script(
         domReady(`initDragDropBuilder(${JSON.stringify({
           table_id,
           viewname,
@@ -24,16 +31,16 @@ class DragDropBuilder {
   }
 
   configuration_workflow() {
-    return new Form({
+    return {
       fields: [
-        new Field({
+        {
           name: "allowed_fields",
           label: "Allowed Fields",
           type: "String[]",
           required: true
-        })
+        }
       ]
-    });
+    };
   }
 
   get_state_fields() {
@@ -41,8 +48,8 @@ class DragDropBuilder {
   }
 
   display_state_form(state) {
-    return div(
-      state.form_state ? JSON.parse(state.form_state).map(field => div(field)) : "No fields added yet"
+    return DragDropBuilder.div(
+      state.form_state ? JSON.parse(state.form_state).map(field => DragDropBuilder.div(field)) : "No fields added yet"
     );
   }
 }
