@@ -28,8 +28,23 @@
 }
 
 .dropped-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px;
   margin: 5px 0;
   background-color: #e0e0e0;
   border: 1px solid #999;
+  cursor: move;
+}
+
+.remove-field {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  cursor: pointer;
 }

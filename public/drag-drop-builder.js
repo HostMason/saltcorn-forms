@@ -38,14 +38,23 @@ function initDragDropBuilder(config) {
     ev.preventDefault();
     const data = ev.dataTransfer.getData("text");
     const droppedElement = document.createElement('div');
-    droppedElement.textContent = data;
     droppedElement.className = 'dropped-field';
+    droppedElement.draggable = true;
+    droppedElement.innerHTML = `
+      <span>${data}</span>
+      <button class="remove-field">X</button>
+    `;
+    droppedElement.querySelector('.remove-field').addEventListener('click', function() {
+      droppedElement.remove();
+      updateFormState();
+    });
+    droppedElement.addEventListener('dragstart', drag);
     formArea.appendChild(droppedElement);
     updateFormState();
   }
 
   function updateFormState() {
-    const formState = Array.from(formArea.children).map(child => child.textContent);
+    const formState = Array.from(formArea.children).map(child => child.querySelector('span').textContent);
     document.getElementById('form-state').value = JSON.stringify(formState);
   }
 }

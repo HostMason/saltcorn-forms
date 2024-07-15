@@ -39,6 +39,12 @@ class DragDropBuilder {
   get_state_fields() {
     return [{name: "form_state", type: "String"}];
   }
+
+  display_state_form(state) {
+    return div(
+      state.form_state ? JSON.parse(state.form_state).map(field => div(field)) : "No fields added yet"
+    );
+  }
 }
 
 module.exports = {
