@@ -1,4 +1,4 @@
-const { input, text } = require("@saltcorn/data/utils/tags");
+const { input, text } = require("@saltcorn/markup/tags");
 const DragDropBuilder = require("./viewtemplates");
 
 module.exports = {

@@ -1,6 +1,6 @@
 const Field = require("@saltcorn/data/models/field");
 const Form = require("@saltcorn/data/models/form");
-const { div, script, input } = require("@saltcorn/data/utils/tags");
+const { div, script, input } = require("@saltcorn/markup/tags");
 
 class DragDropBuilder {
   constructor(name, configuration) {
