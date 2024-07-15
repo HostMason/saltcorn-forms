@@ -1,25 +1,16 @@
+const { div, script, input } = require("@saltcorn/markup/tags");
+
 class DragDropBuilder {
-  static div(...args) {
-    return { tag: 'div', contents: args };
-  }
-
-  static script(content) {
-    return { tag: 'script', contents: content };
-  }
-
-  static input(attrs) {
-    return { tag: 'input', attributes: attrs };
-  }
   constructor(name, configuration) {
     this.name = name;
     this.configuration = configuration;
   }
 
   async run(table_id, viewname, { columns }) {
-    return DragDropBuilder.div(
+    return div(
       { id: "drag-drop-builder" },
-      DragDropBuilder.input({ type: "hidden", id: "form-state", name: "form_state" }),
-      DragDropBuilder.script(
+      input({ type: "hidden", id: "form-state", name: "form_state" }),
+      script(
         domReady(`initDragDropBuilder(${JSON.stringify({
           table_id,
           viewname,
@@ -48,8 +39,8 @@ class DragDropBuilder {
   }
 
   display_state_form(state) {
-    return DragDropBuilder.div(
-      state.form_state ? JSON.parse(state.form_state).map(field => DragDropBuilder.div(field)) : "No fields added yet"
+    return div(
+      state.form_state ? JSON.parse(state.form_state).map(field => div(field)) : "No fields added yet"
     );
   }
 }

@@ -20,5 +20,8 @@
     "saltcorn-plugin",
     "form-builder",
     "drag-and-drop"
-  ]
+  ],
+  "dependencies": {
+    "@saltcorn/markup": "^0.6.0"
+  }
 }

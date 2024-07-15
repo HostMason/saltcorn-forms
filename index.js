@@ -1,37 +1,8 @@
 const DragDropBuilder = require("./viewtemplates");
 
-function input(attrs) {
-  return { tag: 'input', attributes: attrs };
-}
-
-function text(content) {
-  return content;
-}
-
 module.exports = {
   sc_plugin_api_version: 1,
   viewtemplates: [DragDropBuilder],
-  types: [
-    {
-      name: "DragDropForm",
-      sql_name: "text",
-      fieldviews: {
-        show: { isEdit: false, run: text },
-        edit: {
-          isEdit: true,
-          run: (nm, v, attrs, cls) =>
-            input({
-              type: "text",
-              class: ["form-control", cls],
-              name: nm,
-              id: `input${nm}`,
-              value: v,
-              ...attrs
-            })
-        }
-      }
-    }
-  ],
   plugin_name: "hostmason-drag-drop-form-builder",
   headers: [
     {
