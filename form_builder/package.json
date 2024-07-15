@@ -4,7 +4,9 @@
   "description": "A Saltcorn plugin for building custom forms",
   "main": "index.js",
   "dependencies": {
-    "@saltcorn/data": "^0.5.0"
+    "@saltcorn/data": "^0.5.0",
+    "@saltcorn/markup": "^0.5.0",
+    "@saltcorn/db-common": "^0.5.0"
   },
   "author": "Your Name",
   "license": "MIT"
