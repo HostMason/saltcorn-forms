@@ -10,8 +10,8 @@ const { FIELD_TYPES, STEP_TYPES } = require('./types');
 const { renderFormBuilder } = require('./views/builder');
 const { renderEntries } = require('./views/entries');
 
-const configuration_workflow = () =>
-  new Workflow({
+const configuration_workflow = () => {
+  return {
     steps: [
       {
         name: "Form Settings",
@@ -56,7 +56,8 @@ const configuration_workflow = () =>
         }),
       },
     ],
-  });
+  };
+};
 
 const get_state_fields = () => [];
 
