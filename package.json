@@ -7,10 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@saltcorn/data": "^0.5.0",
-    "@saltcorn/markup": "^0.5.0",
-    "@saltcorn/types": "^0.5.0"
+    "@saltcorn/data": "^0.95.0",
+    "@saltcorn/markup": "^0.95.0",
+    "@saltcorn/types": "^0.95.0"
   },
   "author": "hostmason",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "@saltcorn/data": "^0.95.0",
+    "@saltcorn/db-common": "^0.95.0",
+    "@saltcorn/types": "^0.95.0"
+  }
 }
