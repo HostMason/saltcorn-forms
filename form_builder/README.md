@@ -49,3 +49,28 @@ To work on this plugin:
 ## License
 
 This project is licensed under the MIT License.
+# Saltcorn Form Builder Plugin
+
+This plugin provides a form builder functionality for Saltcorn.
+
+## Installation
+
+Since this package is not published on npm, you can install it directly from GitHub using the following command:
+
+```
+npm install git+https://github.com/yourusername/saltcorn-form-builder.git
+```
+
+Replace `yourusername` with your actual GitHub username.
+
+## Usage
+
+After installation, you can use the Form Builder plugin in your Saltcorn application to create custom forms.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License.
