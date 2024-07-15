@@ -9,5 +9,8 @@
     "@saltcorn/db-common": "^0.5.0"
   },
   "author": "Your Name",
-  "license": "MIT"
+  "license": "MIT",
+  "saltcorn": {
+    "plugin": "index.js"
+  }
 }
