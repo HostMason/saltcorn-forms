@@ -4,10 +4,31 @@ This Saltcorn plugin allows users to create custom forms easily.
 
 ## Installation
 
+### From npm (recommended)
+
 1. In your Saltcorn instance, go to the "Plugins" section.
 2. Click on "Add Plugin".
 3. Enter the npm package name: `@saltcorn/form-builder`
 4. Click "Install".
+
+### Local Installation
+
+To install the plugin locally for development or testing:
+
+1. Clone this repository or download the source code.
+2. Navigate to your Saltcorn installation directory.
+3. Create a `plugins` directory if it doesn't exist: `mkdir plugins`
+4. Copy or symlink the `form_builder` directory into the `plugins` directory:
+   ```
+   ln -s /path/to/form_builder /path/to/saltcorn/plugins/form_builder
+   ```
+   or
+   ```
+   cp -r /path/to/form_builder /path/to/saltcorn/plugins/
+   ```
+5. Restart your Saltcorn instance.
+6. Go to the "Plugins" section in your Saltcorn admin panel.
+7. You should see "Form Builder" listed as an available plugin. Click "Add" to activate it.
 
 ## Usage
 
