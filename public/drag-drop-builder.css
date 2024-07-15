@@ -1,0 +1,26 @@
+#drag-drop-builder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.draggable-field {
+  padding: 10px;
+  margin: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: move;
+}
+
+.drop-zone {
+  width: 300px;
+  min-height: 200px;
+  border: 2px dashed #ccc;
+  padding: 10px;
+}
+
+.dropped-field {
+  padding: 10px;
+  margin: 5px;
+  background-color: #e0e0e0;
+  border: 1px solid #999;
+}
