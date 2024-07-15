@@ -27,13 +27,13 @@ module.exports = {
       }
     }
   ],
-  plugin_name: "drag-drop-form-builder",
+  plugin_name: "hostmason-drag-drop-form-builder",
   headers: [
     {
-      script: "/plugins/public/@saltcorn/drag-drop-form-builder/drag-drop-builder.js"
+      script: "/plugins/public/hostmason-drag-drop-form-builder/drag-drop-builder.js"
     },
     {
-      css: "/plugins/public/@saltcorn/drag-drop-form-builder/drag-drop-builder.css"
+      css: "/plugins/public/hostmason-drag-drop-form-builder/drag-drop-builder.css"
     }
   ]
 };

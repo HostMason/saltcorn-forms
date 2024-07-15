@@ -1,23 +1,30 @@
 function initDragDropBuilder(config) {
   const builder = document.getElementById('drag-drop-builder');
-  const { table_id, viewname, columns } = config;
+  const { table_id, viewname, columns, allowed_fields } = config;
+  
+  const fieldList = document.createElement('div');
+  fieldList.className = 'field-list';
+  
+  const formArea = document.createElement('div');
+  formArea.className = 'form-area';
 
-  // Create draggable elements for each column
+  builder.appendChild(fieldList);
+  builder.appendChild(formArea);
+
+  // Create draggable elements for each allowed column
   columns.forEach(column => {
-    const element = document.createElement('div');
-    element.className = 'draggable-field';
-    element.draggable = true;
-    element.textContent = column.name;
-    element.addEventListener('dragstart', drag);
-    builder.appendChild(element);
+    if (allowed_fields.includes(column.name)) {
+      const element = document.createElement('div');
+      element.className = 'draggable-field';
+      element.draggable = true;
+      element.textContent = column.name;
+      element.addEventListener('dragstart', drag);
+      fieldList.appendChild(element);
+    }
   });
 
-  // Create drop zones
-  const dropZone = document.createElement('div');
-  dropZone.className = 'drop-zone';
-  dropZone.addEventListener('dragover', allowDrop);
-  dropZone.addEventListener('drop', drop);
-  builder.appendChild(dropZone);
+  formArea.addEventListener('dragover', allowDrop);
+  formArea.addEventListener('drop', drop);
 
   function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.textContent);
@@ -33,6 +40,12 @@ function initDragDropBuilder(config) {
     const droppedElement = document.createElement('div');
     droppedElement.textContent = data;
     droppedElement.className = 'dropped-field';
-    ev.target.appendChild(droppedElement);
+    formArea.appendChild(droppedElement);
+    updateFormState();
+  }
+
+  function updateFormState() {
+    const formState = Array.from(formArea.children).map(child => child.textContent);
+    document.getElementById('form-state').value = JSON.stringify(formState);
   }
 }

@@ -1,6 +1,6 @@
 const Field = require("@saltcorn/data/models/field");
 const Form = require("@saltcorn/data/models/form");
-const { div, script } = require("@saltcorn/markup/tags");
+const { div, script, input } = require("@saltcorn/markup/tags");
 
 class DragDropBuilder {
   constructor(name, configuration) {
@@ -11,11 +11,13 @@ class DragDropBuilder {
   async run(table_id, viewname, { columns }) {
     return div(
       { id: "drag-drop-builder" },
+      input({ type: "hidden", id: "form-state", name: "form_state" }),
       script(
         domReady(`initDragDropBuilder(${JSON.stringify({
           table_id,
           viewname,
-          columns
+          columns,
+          allowed_fields: this.configuration.allowed_fields
         })})`)
       )
     );
@@ -27,7 +29,7 @@ class DragDropBuilder {
         new Field({
           name: "allowed_fields",
           label: "Allowed Fields",
-          type: "String",
+          type: "String[]",
           required: true
         })
       ]
@@ -35,7 +37,7 @@ class DragDropBuilder {
   }
 
   get_state_fields() {
-    return [];
+    return [{name: "form_state", type: "String"}];
   }
 }
 

@@ -3,24 +3,33 @@
   justify-content: space-between;
 }
 
+.field-list {
+  width: 200px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+.form-area {
+  flex-grow: 1;
+  min-height: 300px;
+  margin-left: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 2px dashed #ccc;
+}
+
 .draggable-field {
   padding: 10px;
-  margin: 5px;
+  margin: 5px 0;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   cursor: move;
 }
 
-.drop-zone {
-  width: 300px;
-  min-height: 200px;
-  border: 2px dashed #ccc;
-  padding: 10px;
-}
-
 .dropped-field {
   padding: 10px;
-  margin: 5px;
+  margin: 5px 0;
   background-color: #e0e0e0;
   border: 1px solid #999;
 }
