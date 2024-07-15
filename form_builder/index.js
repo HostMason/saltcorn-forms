@@ -64,7 +64,7 @@ const run = async (table_id, viewname, config, state, extra) => {
   const { form_structure, form_name, description, success_message, submitLabel } = config;
   
   if (state.mode === 'builder') {
-    return renderFormBuilder(form_structure);
+    return renderFormBuilder(form_structure || {});
   }
 
   if (state.mode === 'entries') {
@@ -72,12 +72,16 @@ const run = async (table_id, viewname, config, state, extra) => {
     return renderEntries(entries);
   }
 
-  if (!form_structure || !form_structure.steps || form_structure.steps.length === 0) {
+  if (!form_structure || !Array.isArray(form_structure.steps) || form_structure.steps.length === 0) {
     return div({ class: "alert alert-danger" }, "Error: Form structure is invalid or empty");
   }
 
   const currentStep = state.step || 0;
   const step = form_structure.steps[currentStep];
+
+  if (!step || !Array.isArray(step.fields)) {
+    return div({ class: "alert alert-danger" }, "Error: Invalid step structure");
+  }
 
   const form = new Form({
     action: `/view/${viewname}`,
